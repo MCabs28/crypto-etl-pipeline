@@ -1,17 +1,26 @@
 import requests
+from constants import COINS
+from logs.logger import logger
 
-URL = (
-    "https://api.coingecko.com/api/v3/simple/price"
-    "?ids=bitcoin,ethereum"
-    "&vs_currencies=usd"
-    "&include_market_cap=true"
-    "&include_24hr_vol=true"
-)
+BASE_URL = "https://api.coingecko.com/api/v3/simple/price"
+
 
 def fetch_crypto_data():
-    response = requests.get(URL)
+    try:
+        coin_ids = ",".join(COINS)
+        params = {
+            "ids": coin_ids,
+            "vs_currencies": "usd",
+            "include_market_cap": "true",
+            "include_24hr_vol": "true",
+        }
 
-    if response.status_code == 200:
+        response = requests.get(BASE_URL, params=params)
+
+        response.raise_for_status()
+        logger.info("Succesfully fetched cryptocurrency data")
         return response.json()
 
-    raise Exception(f"API Error: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to fetch cryptocurrency data: {e}")
+        raise
