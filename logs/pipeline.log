@@ -322,3 +322,199 @@ Traceback (most recent call last):
     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
 psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "postgres"
 
+2026-07-02 21:39:16,775 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:39:17,271 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/api/v3/simple/price/invalid?ids=bitcoin%2Cethereum&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true
+2026-07-02 21:39:17,272 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 11, in main
+    data = fetch_crypto_data()
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/before_sleep.py", line 64, in log_it
+    logger.log(
+    ~~~~~~~~~~^
+        log_level,
+        ^^^^^^^^^^
+    ...<2 lines>...
+        exc_info=local_exc_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/logging/__init__.py", line 1586, in log
+    raise TypeError("level must be an integer")
+TypeError: level must be an integer
+2026-07-02 21:40:06,309 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:40:06,689 | INFO | Succesfully fetched cryptocurrency data
+2026-07-02 21:40:06,691 | INFO | Fetching cryptocurrency data...
+2026-07-02 21:40:06,692 | INFO | {
+    "bitcoin": {
+        "usd": 61859,
+        "usd_market_cap": 1240235552763.254,
+        "usd_24h_vol": 45871327609.61614
+    },
+    "ethereum": {
+        "usd": 1700.99,
+        "usd_market_cap": 205133214333.29453,
+        "usd_24h_vol": 14130862380.450165
+    }
+}
+2026-07-02 21:40:06,692 | INFO | Connecting to PostgreSQL...
+2026-07-02 21:40:06,750 | INFO | Connected successfully.
+2026-07-02 21:40:06,751 | INFO | Inserting bitcoin...
+2026-07-02 21:40:06,759 | INFO | Inserting ethereum...
+2026-07-02 21:40:06,760 | INFO | Database transaction committed successfully.
+2026-07-02 21:40:06,760 | INFO | Closing database connection.
+2026-07-02 21:40:06,760 | INFO | Successfully inserted 2 records.
+2026-07-02 21:40:06,760 | INFO | Pipeline completed successfully.
+2026-07-02 21:40:25,506 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:40:26,234 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:40:26,235 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 11, in main
+    data = fetch_crypto_data()
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/before_sleep.py", line 64, in log_it
+    logger.log(
+    ~~~~~~~~~~^
+        log_level,
+        ^^^^^^^^^^
+    ...<2 lines>...
+        exc_info=local_exc_info,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/logging/__init__.py", line 1586, in log
+    raise TypeError("level must be an integer")
+TypeError: level must be an integer
+2026-07-02 21:43:02,037 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:43:02,500 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:43:02,501 | WARNING | Retrying extract.crypto_api.fetch_crypto_data in 2 seconds as it raised HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid.
+2026-07-02 21:43:04,967 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:43:04,968 | WARNING | Retrying extract.crypto_api.fetch_crypto_data in 4 seconds as it raised HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid.
+2026-07-02 21:43:09,463 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:43:09,464 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 11, in main
+    data = fetch_crypto_data()
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/extract/crypto_api.py", line 28, in fetch_crypto_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:43:56,417 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:43:57,071 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:43:57,071 | WARNING | Retrying extract.crypto_api.fetch_crypto_data in 2 seconds as it raised HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid.
+2026-07-02 21:43:59,526 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:43:59,526 | WARNING | Retrying extract.crypto_api.fetch_crypto_data in 2 seconds as it raised HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid.
+2026-07-02 21:44:01,995 | ERROR | Failed to fetch cryptocurrency data: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:44:01,995 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 11, in main
+    data = fetch_crypto_data()
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/extract/crypto_api.py", line 28, in fetch_crypto_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/venv/lib/python3.14/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/en/invalid
+2026-07-02 21:46:02,383 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:46:02,879 | INFO | Succesfully fetched cryptocurrency data
+2026-07-02 21:46:02,881 | INFO | Fetching cryptocurrency data...
+2026-07-02 21:46:02,882 | INFO | {
+    "bitcoin": {
+        "usd": 61868,
+        "usd_market_cap": 1241215839541.554,
+        "usd_24h_vol": 45474994542.33599
+    },
+    "ethereum": {
+        "usd": 1707.36,
+        "usd_market_cap": 206040982684.12912,
+        "usd_24h_vol": 13251732157.31413
+    }
+}
+2026-07-02 21:46:02,882 | INFO | Connecting to PostgreSQL...
+2026-07-02 21:46:02,924 | INFO | Connected successfully.
+2026-07-02 21:46:02,924 | INFO | Inserting bitcoin...
+2026-07-02 21:46:02,926 | INFO | Inserting ethereum...
+2026-07-02 21:46:02,927 | INFO | Database transaction committed successfully.
+2026-07-02 21:46:02,927 | INFO | Closing database connection.
+2026-07-02 21:46:02,927 | INFO | Successfully inserted 2 records.
+2026-07-02 21:46:02,927 | INFO | Pipeline completed successfully.
+2026-07-02 21:58:53,901 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:58:54,364 | INFO | Succesfully fetched cryptocurrency data
+2026-07-02 21:58:54,364 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 16, in main
+    validate_crypto_data(data)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/validation/validator.py", line 17, in validate_crypto_data
+    raise ValueError("f{coin}: '{field}' cannot be None ")
+ValueError: f{coin}: '{field}' cannot be None 
+2026-07-02 21:59:22,534 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 21:59:22,711 | INFO | Succesfully fetched cryptocurrency data
+2026-07-02 21:59:22,712 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 16, in main
+    validate_crypto_data(data)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/validation/validator.py", line 17, in validate_crypto_data
+    raise ValueError("f{coin}: '{field}' cannot be None ")
+ValueError: f{coin}: '{field}' cannot be None 
+2026-07-02 22:01:40,096 | INFO | Starting Crypto ETL Pipeline...
+2026-07-02 22:01:40,509 | INFO | Succesfully fetched cryptocurrency data
+2026-07-02 22:01:40,510 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 16, in main
+    validate_crypto_data(data)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/validation/validator.py", line 17, in validate_crypto_data
+    raise ValueError(f"{coin}: '{field}' cannot be None ")
+ValueError: bitcoin: 'usd' cannot be None 
