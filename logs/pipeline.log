@@ -518,3 +518,83 @@ Traceback (most recent call last):
   File "/Users/mark/Github/projects/crypto-etl-pipeline/validation/validator.py", line 17, in validate_crypto_data
     raise ValueError(f"{coin}: '{field}' cannot be None ")
 ValueError: bitcoin: 'usd' cannot be None 
+2026-07-04 23:13:58,222 | INFO | Starting Crypto ETL Pipeline...
+2026-07-04 23:13:58,645 | INFO | Succesfully fetched cryptocurrency data
+2026-07-04 23:13:58,646 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 16, in main
+    validate_crypto_data(data)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/validation/validator.py", line 17, in validate_crypto_data
+    raise ValueError(f"{coin}: '{field}' cannot be None")
+ValueError: bitcoin: 'usd' cannot be None
+2026-07-04 23:14:22,965 | INFO | Starting Crypto ETL Pipeline...
+2026-07-04 23:14:23,121 | INFO | Succesfully fetched cryptocurrency data
+2026-07-04 23:14:23,122 | ERROR | Pipeline failed.
+Traceback (most recent call last):
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/app.py", line 16, in main
+    validate_crypto_data(data)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mark/Github/projects/crypto-etl-pipeline/validation/validator.py", line 17, in validate_crypto_data
+    raise ValueError(f"{coin}: '{field}' cannot be None")
+ValueError: bitcoin: 'usd' cannot be None
+2026-07-04 23:17:14,223 | INFO | Starting Crypto ETL Pipeline...
+2026-07-04 23:17:14,633 | INFO | Succesfully fetched cryptocurrency data
+2026-07-04 23:17:14,635 | INFO | Data validation passed.
+2026-07-04 23:17:14,636 | INFO | Data validation passed.
+2026-07-04 23:17:14,636 | INFO | Data validation passed.
+2026-07-04 23:17:14,636 | INFO | Data validation passed.
+2026-07-04 23:17:14,636 | INFO | Data validation passed.
+2026-07-04 23:17:14,636 | INFO | Data validation passed.
+2026-07-04 23:17:14,636 | INFO | Fetching cryptocurrency data...
+2026-07-04 23:17:14,636 | INFO | {
+    "bitcoin": {
+        "usd": 62755,
+        "usd_market_cap": 1258278245030.8582,
+        "usd_24h_vol": 20036008317.33289
+    },
+    "ethereum": {
+        "usd": 1783.93,
+        "usd_market_cap": 215249599908.5044,
+        "usd_24h_vol": 7073619118.188358
+    }
+}
+2026-07-04 23:17:14,636 | INFO | Connecting to PostgreSQL...
+2026-07-04 23:17:14,636 | INFO | Connecting to PostgreSQL...
+2026-07-04 23:17:14,702 | INFO | Connected successfully.
+2026-07-04 23:17:14,702 | INFO | Inserting bitcoin...
+2026-07-04 23:17:14,711 | INFO | Inserting ethereum...
+2026-07-04 23:17:14,712 | INFO | Database transaction committed successfully.
+2026-07-04 23:17:14,712 | INFO | Closing database connection.
+2026-07-04 23:17:14,712 | INFO | Successfully inserted 2 records.
+2026-07-04 23:17:14,712 | INFO | Pipeline completed successfully.
+2026-07-04 23:20:17,617 | INFO | Starting Crypto ETL Pipeline...
+2026-07-04 23:20:18,120 | INFO | Succesfully fetched cryptocurrency data
+2026-07-04 23:20:18,122 | INFO | Data validation passed.
+2026-07-04 23:20:18,122 | INFO | Data validation passed.
+2026-07-04 23:20:18,122 | INFO | Data validation passed.
+2026-07-04 23:20:18,122 | INFO | Data validation passed.
+2026-07-04 23:20:18,122 | INFO | Data validation passed.
+2026-07-04 23:20:18,123 | INFO | Data validation passed.
+2026-07-04 23:20:18,123 | INFO | Fetching cryptocurrency data...
+2026-07-04 23:20:18,123 | INFO | {
+    "bitcoin": {
+        "usd": 62741,
+        "usd_market_cap": 1258089178679.937,
+        "usd_24h_vol": 19420710922.811893
+    },
+    "ethereum": {
+        "usd": 1784.92,
+        "usd_market_cap": 215407800516.5116,
+        "usd_24h_vol": 7078402943.484275
+    }
+}
+2026-07-04 23:20:18,123 | INFO | Connecting to PostgreSQL...
+2026-07-04 23:20:18,123 | INFO | Connecting to PostgreSQL...
+2026-07-04 23:20:18,172 | INFO | Connected successfully.
+2026-07-04 23:20:18,173 | INFO | Inserting bitcoin...
+2026-07-04 23:20:18,176 | INFO | Inserting ethereum...
+2026-07-04 23:20:18,177 | INFO | Database transaction committed successfully.
+2026-07-04 23:20:18,177 | INFO | Closing database connection.
+2026-07-04 23:20:18,177 | INFO | Successfully inserted 2 records.
+2026-07-04 23:20:18,177 | INFO | Pipeline completed successfully.

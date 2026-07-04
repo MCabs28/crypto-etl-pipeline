@@ -6,12 +6,11 @@ from validation.validator import validate_crypto_data
 
 
 def main():
+
     try:
         logger.info("Starting Crypto ETL Pipeline...")
 
         data = fetch_crypto_data()
-
-        data["bitcoin"]["usd"] = None
 
         validate_crypto_data(data)
 

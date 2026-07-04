@@ -1,33 +1,55 @@
-# Crypto ETL Pipeline
+# 🚀 Crypto ETL Pipeline
 
-A beginner-friendly Data Engineering project built with **Python** and **PostgreSQL** that extracts real-time cryptocurrency data from the CoinGecko API, validates it, and stores it in a PostgreSQL database.
+A production-inspired **ETL (Extract, Transform, Load)** project built with **Python**, **PostgreSQL**, and **SQL**. The pipeline extracts real-time cryptocurrency market data from the CoinGecko API, validates the data, stores it in PostgreSQL, and performs analytical SQL queries on the collected historical data.
 
-This project is part of my journey to becoming a Data Engineer and focuses on writing clean, modular, and production-inspired ETL code.
+This project is part of my Data Engineering portfolio and focuses on applying software engineering best practices such as modular architecture, logging, exception handling, transaction management, and data validation.
 
-## Project Overview
+---
 
-The pipeline performs the following steps:
+## 📌 Project Overview
 
-1. Extract cryptocurrency data from the CoinGecko API
-2. Retry failed API requests automatically
-3. Validate the incoming data
-4. Load validated data into PostgreSQL
-5. Log every step of the pipeline
+The pipeline performs the following workflow:
 
+```text
+CoinGecko API
+      │
+      ▼
+Extract Data
+      │
+      ▼
+Automatic Retry
+      │
+      ▼
+Data Validation
+      │
+      ▼
+Load into PostgreSQL
+      │
+      ▼
+Logging
+      │
+      ▼
+SQL Analytics
+```
 
-## Tech Stack
+---
+
+## 🛠️ Tech Stack
 
 * Python 3
 * PostgreSQL
+* SQL
 * psycopg2
 * Requests
 * Tenacity
 * Python-dotenv
 * Logging
 * DBeaver
+* Git & GitHub
 
+---
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 crypto-etl-pipeline/
@@ -52,47 +74,66 @@ crypto-etl-pipeline/
 │   ├── logger.py
 │   └── pipeline.log
 │
-└── venv/
+└── README.md
 ```
 
 ---
 
-## Features
+## ✨ Features
 
-* Fetch cryptocurrency prices from CoinGecko API
+* Fetch real-time cryptocurrency data from the CoinGecko API
 * Automatic retry for temporary API failures
 * Data validation before database insertion
-* PostgreSQL transaction handling (`commit` / `rollback`)
-* Structured logging
-* Environment variable configuration
-* Modular project architecture
+* PostgreSQL transaction management (`COMMIT` / `ROLLBACK`)
+* Structured logging to both console and log file
+* Environment variable configuration using `.env`
+* Modular and maintainable project architecture
+* Historical data collection for trend analysis
+* SQL analytics using aggregate functions and time-based queries
 
 ---
 
-## Database
+## 🗄️ Database Schema
 
-Table: `crypto_prices`
+**Table:** `crypto_prices`
 
-Columns:
-
-* coin_name
-* symbol
-* price_usd
-* market_cap
-* total_volume
-* fetched_at
+| Column       | Description                       |
+| ------------ | --------------------------------- |
+| coin_name    | Cryptocurrency name               |
+| symbol       | Coin symbol (BTC, ETH)            |
+| price_usd    | Current price in USD              |
+| market_cap   | Market capitalization             |
+| total_volume | 24-hour trading volume            |
+| fetched_at   | Timestamp when data was collected |
 
 ---
 
-##  Running the Project
+## 📊 SQL Analytics
 
-Activate the virtual environment:
+The project includes analytical SQL queries such as:
+
+* Count total records
+* Retrieve latest cryptocurrency prices
+* Filter records using `WHERE`
+* Sort data using `ORDER BY`
+* Limit query results using `LIMIT`
+* Calculate averages with `AVG()`
+* Find highest and lowest values using `MAX()` and `MIN()`
+* Group data using `GROUP BY`
+* Round values using `ROUND()`
+* Perform daily time-based analysis using `DATE()`
+
+---
+
+## ▶️ Running the Project
+
+### Activate the virtual environment
 
 ```bash
 source venv/bin/activate
 ```
 
-Run the pipeline:
+### Run the ETL pipeline
 
 ```bash
 python app.py
@@ -100,9 +141,9 @@ python app.py
 
 ---
 
-## Current Progress
+## 📈 Current Progress
 
-### Completed
+### ✅ Completed
 
 * Project setup
 * PostgreSQL integration
@@ -110,49 +151,75 @@ python app.py
 * ETL pipeline
 * Logging
 * Exception handling
-* Automatic retry
+* Automatic retry mechanism
 * Data validation
-
-### Coming Next
-
 * SQL Analytics
+
+### 🚧 Coming Next
+
 * dbt Transformations
 * Pipeline Scheduling
-* Unit Testing
+* Unit Testing with pytest
 * Docker
-* Documentation Improvements
+* GitHub Documentation Improvements
 
 ---
 
-## What I Learned
+## 📚 What I Learned
 
-Through this project, I practiced:
+Through this project, I gained practical experience with:
 
-* Python modules and packages
-* REST API integration
-* PostgreSQL connectivity
-* SQL INSERT operations
-* Transaction management
+### Python
+
+* Project structure
+* Functions
+* Dictionaries
+* Loops
 * Exception handling
-* Logging best practices
+* Logging
+* Environment variables
+* Modular programming
+
+### SQL
+
+* SELECT
+* WHERE
+* ORDER BY
+* LIMIT
+* COUNT()
+* AVG()
+* MAX()
+* MIN()
+* ROUND()
+* GROUP BY
+* DATE()
+
+### Data Engineering
+
+* ETL pipeline development
+* REST API integration
 * Data validation
-* Writing modular and maintainable code
+* Retry mechanisms
+* PostgreSQL transactions
+* Historical data collection
+* SQL-based analytics
+* Production-inspired project organization
 
 ---
 
-## Future Improvements
+## 🎯 Future Improvements
 
-* Build analytics queries using SQL
-* Transform data using dbt
-* Automate pipeline execution
+* Build data transformations using dbt
+* Schedule the pipeline with Apache Airflow
+* Add automated testing using pytest
 * Dockerize the application
-* Add unit tests with pytest
+* Create architecture diagrams
 * Deploy the project
 
 ---
 
-##  Author
+## 👨‍💻 Author
 
 **Mark Cabael**
 
-Aspiring Data Engineer focused on building production-inspired data pipelines using Python, SQL, PostgreSQL, dbt, Airflow, and Databricks.
+Aspiring Data Engineer building production-inspired data pipelines using **Python**, **SQL**, **PostgreSQL**, **dbt**, **Apache Airflow**, **PySpark**, and **Databricks**.
