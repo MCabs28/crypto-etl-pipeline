@@ -1,5 +1,18 @@
+# Python
 venv/
-.env
 __pycache__/
 *.pyc
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# macOS
 .DS_Store
+
+# dbt
+dbt_packages/
+target/
+logs/

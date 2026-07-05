@@ -598,3 +598,33 @@ ValueError: bitcoin: 'usd' cannot be None
 2026-07-04 23:20:18,177 | INFO | Closing database connection.
 2026-07-04 23:20:18,177 | INFO | Successfully inserted 2 records.
 2026-07-04 23:20:18,177 | INFO | Pipeline completed successfully.
+2026-07-05 19:11:28,419 | INFO | Starting Crypto ETL Pipeline...
+2026-07-05 19:11:28,927 | INFO | Succesfully fetched cryptocurrency data
+2026-07-05 19:11:28,929 | INFO | Data validation passed.
+2026-07-05 19:11:28,929 | INFO | Data validation passed.
+2026-07-05 19:11:28,929 | INFO | Data validation passed.
+2026-07-05 19:11:28,929 | INFO | Data validation passed.
+2026-07-05 19:11:28,929 | INFO | Data validation passed.
+2026-07-05 19:11:28,929 | INFO | Data validation passed.
+2026-07-05 19:11:28,929 | INFO | Fetching cryptocurrency data...
+2026-07-05 19:11:28,929 | INFO | {
+    "bitcoin": {
+        "usd": 62643,
+        "usd_market_cap": 1256153047919.1526,
+        "usd_24h_vol": 18370458159.877262
+    },
+    "ethereum": {
+        "usd": 1761.73,
+        "usd_market_cap": 212615260858.2766,
+        "usd_24h_vol": 11658525426.746826
+    }
+}
+2026-07-05 19:11:28,929 | INFO | Connecting to PostgreSQL...
+2026-07-05 19:11:28,929 | INFO | Connecting to PostgreSQL...
+2026-07-05 19:11:29,054 | INFO | Connected successfully.
+2026-07-05 19:11:29,055 | INFO | Inserting bitcoin...
+2026-07-05 19:11:29,078 | INFO | Inserting ethereum...
+2026-07-05 19:11:29,080 | INFO | Database transaction committed successfully.
+2026-07-05 19:11:29,080 | INFO | Closing database connection.
+2026-07-05 19:11:29,080 | INFO | Successfully inserted 2 records.
+2026-07-05 19:11:29,080 | INFO | Pipeline completed successfully.
