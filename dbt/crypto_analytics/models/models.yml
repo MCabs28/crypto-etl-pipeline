@@ -2,11 +2,12 @@ version: 2
 
 models:
   - name: stg_crypto_prices
-    description: "Cleaned cryptocurrency price data."
+    description: "Staging model containing cleaned cryptocurrency market data from the CoinGecko API."
 
     columns:
       - name: total_volume
-        description: "24-hour trading volume."
+        description: "Total trading volume in the last 24 hours."
 
         tests:
           - not_null
+          - is_positive

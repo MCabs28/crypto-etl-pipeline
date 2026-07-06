@@ -5,4 +5,4 @@ SELECT
     market_cap,
     total_volume,
     fetched_at
-FROM crypto_prices
+FROM {{ source('crypto_db', 'crypto_prices') }}

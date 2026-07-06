@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: crypto_db
+    description: "Raw cryptocurrency data loaded by the Python ETL pipeline."
+
+    database: crypto_db
+    schema: public
+
+    tables:
+      - name: crypto_prices
+        description: "Raw cryptocurrency prices retrieved from the CoinGecko API."
