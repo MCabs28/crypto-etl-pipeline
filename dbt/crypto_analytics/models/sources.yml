@@ -10,3 +10,30 @@ sources:
     tables:
       - name: crypto_prices
         description: "Raw cryptocurrency prices retrieved from the CoinGecko API."
+
+        freshness:
+          warn_after:
+            count: 1
+            period: day
+          error_after:
+            count: 2
+            period: day
+
+        loaded_at_field: fetched_at
+
+
+        columns:
+          - name: coin_name
+            description: "Name of the cryptocurrency."
+            tests:
+              - not_null
+
+          - name: symbol
+            description: "Ticker symbol."
+            tests:
+              - not_null
+
+          - name: total_volume
+            description: "24-hour trading volume."
+            tests:
+              - not_null

@@ -1,10 +1,13 @@
 # Python
 venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
 
-# Environment
+# Environment Variables
 .env
+
 
 # Logs
 *.log
@@ -12,7 +15,12 @@ __pycache__/
 # macOS
 .DS_Store
 
+
 # dbt
 dbt_packages/
 target/
 logs/
+
+# IDE
+.vscode/
+.idea/

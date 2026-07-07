@@ -1,5 +1,5 @@
 import requests
-from constants import COINS
+from config.constants import COINS
 from logs.logger import logger
 from tenacity import retry, stop_after_attempt, wait_exponential, before_sleep_log
 import logging

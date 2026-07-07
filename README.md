@@ -1,139 +1,213 @@
-# 🚀 Crypto ETL Pipeline
+# Crypto ETL Pipeline
 
-A production-inspired **ETL (Extract, Transform, Load)** project built with **Python**, **PostgreSQL**, and **SQL**. The pipeline extracts real-time cryptocurrency market data from the CoinGecko API, validates the data, stores it in PostgreSQL, and performs analytical SQL queries on the collected historical data.
+An end-to-end Data Engineering project that extracts real-time cryptocurrency market data from the CoinGecko API, validates the data, loads it into PostgreSQL, and transforms it into analytics-ready models using dbt.
 
-This project is part of my Data Engineering portfolio and focuses on applying software engineering best practices such as modular architecture, logging, exception handling, transaction management, and data validation.
+This project demonstrates modern data engineering practices including ETL development, SQL analytics, dbt modeling, data quality testing, source freshness monitoring, incremental models, reusable macros, and project organization.
 
 ---
 
-## 📌 Project Overview
+# Overview
 
-The pipeline performs the following workflow:
+The pipeline automates the process of collecting cryptocurrency market data and preparing it for analytics.
+
+The workflow consists of:
+
+1. Extract cryptocurrency data from the CoinGecko API.
+2. Validate incoming data before loading.
+3. Load clean data into PostgreSQL.
+4. Build staging and analytics models using dbt.
+5. Test data quality using dbt generic and custom tests.
+6. Monitor source freshness.
+7. Create reusable SQL logic with dbt macros.
+8. Optimize processing using incremental models.
+
+---
+
+# Features
+
+- Extract cryptocurrency market data from the CoinGecko API
+- Validate incoming data before loading
+- Load clean data into PostgreSQL
+- Build staging and mart models using dbt
+- SQL analytics for reporting
+- Generic dbt tests
+- Custom dbt tests
+- Source testing
+- Source freshness monitoring
+- Seed files for reference data
+- Reusable dbt macros
+- Incremental models for efficient processing
+- Logging and exception handling
+- Retry logic for API requests
+- Clean project architecture
+
+---
+
+# Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Language | Python |
+| Database | PostgreSQL |
+| Query Language | SQL |
+| Transformation | dbt |
+| API | CoinGecko API |
+| Version Control | Git & GitHub |
+
+---
+
+# Architecture
+
+```
+                CoinGecko API
+                      │
+                      ▼
+             Python ETL Pipeline
+                      │
+      ┌───────────────┼───────────────┐
+      ▼               ▼               ▼
+  Validation      Logging        Retry Logic
+                      │
+                      ▼
+                PostgreSQL
+                      │
+                      ▼
+                    dbt
+      ┌───────────────┼────────────────┐
+      ▼               ▼                ▼
+   Sources        Staging Models    Mart Models
+                      │
+                      ▼
+          Tests • Seeds • Macros
+                      │
+                      ▼
+             Analytics-ready Data
+```
+
+---
+
+#  Project Structure
 
 ```text
+crypto-etl-pipeline/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── config/
+│   ├── config.py
+│   └── constants.py
+│
+├── extract/
+│   └── crypto_api.py
+│
+├── load/
+│   ├── db_connection.py
+│   └── load_db.py
+│
+├── validation/
+│   └── validator.py
+│
+├── tests/
+│
+└── dbt/
+    └── crypto_analytics/
+        ├── models/
+        ├── macros/
+        ├── seeds/
+        ├── tests/
+        ├── analyses/
+        ├── snapshots/
+        ├── dbt_project.yml
+        └── README.md
+```
+
+---
+
+# Data Flow
+
+```
 CoinGecko API
       │
       ▼
 Extract Data
       │
       ▼
-Automatic Retry
-      │
-      ▼
-Data Validation
+Validate Data
       │
       ▼
 Load into PostgreSQL
       │
       ▼
-Logging
+dbt Sources
       │
       ▼
-SQL Analytics
+Staging Models
+      │
+      ▼
+Mart Models
+      │
+      ▼
+Analytics & Reporting
 ```
 
 ---
 
-## 🛠️ Tech Stack
+# Setup Instructions
 
-* Python 3
-* PostgreSQL
-* SQL
-* psycopg2
-* Requests
-* Tenacity
-* Python-dotenv
-* Logging
-* DBeaver
-* Git & GitHub
+## Clone the repository
 
----
-
-## 📂 Project Structure
-
-```text
-crypto-etl-pipeline/
-│
-├── app.py
-├── config.py
-├── constants.py
-├── requirements.txt
-├── .env
-│
-├── extract/
-│   └── crypto_api.py
-│
-├── validation/
-│   └── validator.py
-│
-├── load/
-│   ├── db_connection.py
-│   └── load_db.py
-│
-├── logs/
-│   ├── logger.py
-│   └── pipeline.log
-│
-└── README.md
+```bash
+git clone <repository-url>
+cd crypto-etl-pipeline
 ```
 
----
+## Create a virtual environment
 
-## ✨ Features
+```bash
+python -m venv venv
+```
 
-* Fetch real-time cryptocurrency data from the CoinGecko API
-* Automatic retry for temporary API failures
-* Data validation before database insertion
-* PostgreSQL transaction management (`COMMIT` / `ROLLBACK`)
-* Structured logging to both console and log file
-* Environment variable configuration using `.env`
-* Modular and maintainable project architecture
-* Historical data collection for trend analysis
-* SQL analytics using aggregate functions and time-based queries
+## Activate the environment
 
----
-
-## 🗄️ Database Schema
-
-**Table:** `crypto_prices`
-
-| Column       | Description                       |
-| ------------ | --------------------------------- |
-| coin_name    | Cryptocurrency name               |
-| symbol       | Coin symbol (BTC, ETH)            |
-| price_usd    | Current price in USD              |
-| market_cap   | Market capitalization             |
-| total_volume | 24-hour trading volume            |
-| fetched_at   | Timestamp when data was collected |
-
----
-
-## 📊 SQL Analytics
-
-The project includes analytical SQL queries such as:
-
-* Count total records
-* Retrieve latest cryptocurrency prices
-* Filter records using `WHERE`
-* Sort data using `ORDER BY`
-* Limit query results using `LIMIT`
-* Calculate averages with `AVG()`
-* Find highest and lowest values using `MAX()` and `MIN()`
-* Group data using `GROUP BY`
-* Round values using `ROUND()`
-* Perform daily time-based analysis using `DATE()`
-
----
-
-## ▶️ Running the Project
-
-### Activate the virtual environment
+### macOS / Linux
 
 ```bash
 source venv/bin/activate
 ```
 
-### Run the ETL pipeline
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+## Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Configure environment variables
+
+Create a `.env` file containing your PostgreSQL credentials.
+
+Example:
+
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=crypto_db
+DB_USER=postgres
+DB_PASSWORD=your_password
+```
+
+---
+
+# Running the ETL Pipeline
+
+Execute the ETL pipeline:
 
 ```bash
 python app.py
@@ -141,85 +215,94 @@ python app.py
 
 ---
 
-## 📈 Current Progress
+# Running dbt
 
-### ✅ Completed
+Navigate to the dbt project:
 
-* Project setup
-* PostgreSQL integration
-* CoinGecko API integration
-* ETL pipeline
-* Logging
-* Exception handling
-* Automatic retry mechanism
-* Data validation
-* SQL Analytics
+```bash
+cd dbt/crypto_analytics
+```
 
-### 🚧 Coming Next
+Build models:
 
-* dbt Transformations
-* Pipeline Scheduling
-* Unit Testing with pytest
-* Docker
-* GitHub Documentation Improvements
+```bash
+dbt run
+```
 
----
+Run tests:
 
-## 📚 What I Learned
+```bash
+dbt test
+```
 
-Through this project, I gained practical experience with:
+Load seed files:
 
-### Python
+```bash
+dbt seed
+```
 
-* Project structure
-* Functions
-* Dictionaries
-* Loops
-* Exception handling
-* Logging
-* Environment variables
-* Modular programming
+Check source freshness:
 
-### SQL
+```bash
+dbt source freshness
+```
 
-* SELECT
-* WHERE
-* ORDER BY
-* LIMIT
-* COUNT()
-* AVG()
-* MAX()
-* MIN()
-* ROUND()
-* GROUP BY
-* DATE()
+Generate documentation:
 
-### Data Engineering
+```bash
+dbt docs generate
+```
 
-* ETL pipeline development
-* REST API integration
-* Data validation
-* Retry mechanisms
-* PostgreSQL transactions
-* Historical data collection
-* SQL-based analytics
-* Production-inspired project organization
+Launch documentation:
+
+```bash
+dbt docs serve
+```
 
 ---
 
-## 🎯 Future Improvements
+# Skills Demonstrated
 
-* Build data transformations using dbt
-* Schedule the pipeline with Apache Airflow
-* Add automated testing using pytest
-* Dockerize the application
-* Create architecture diagrams
-* Deploy the project
+- Python ETL Development
+- REST API Integration
+- Data Validation
+- Logging
+- Exception Handling
+- Retry Logic
+- PostgreSQL
+- SQL Analytics
+- dbt Modeling
+- Generic Tests
+- Custom Tests
+- Source Testing
+- Source Freshness
+- Seed Files
+- Incremental Models
+- Macros
+- Git Version Control
+- Project Organization
 
 ---
 
-## 👨‍💻 Author
+# Future Improvements
+
+- Orchestrate the pipeline using Apache Airflow
+- Containerize the project with Docker
+- Deploy to AWS
+- Process large-scale datasets using Apache Spark
+- Add CI/CD with GitHub Actions
+- Implement automated monitoring and alerting
+
+---
+
+# Learning Goals
+
+This project was built to strengthen practical skills in modern Data Engineering by applying industry-standard tools and workflows in an end-to-end ETL pipeline.
+
+---
+
+##  Author
 
 **Mark Cabael**
 
-Aspiring Data Engineer building production-inspired data pipelines using **Python**, **SQL**, **PostgreSQL**, **dbt**, **Apache Airflow**, **PySpark**, and **Databricks**.
+Data Engineering Portfolio Project

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from constants import SYMBOLS
+from config.constants import SYMBOLS
 from load.db_connection import get_connection
 from logs.logger import logger
 
